@@ -19,6 +19,7 @@ namespace SecureApp.Web.Controllers
         public ActionResult Login(LoginViewModel viewModel, string returnUrl = null)
         {
             
+            
 
             if (Membership.ValidateUser(viewModel.UserName, viewModel.Password))
             {
