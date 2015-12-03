@@ -17,9 +17,7 @@ namespace SecureApp.Web.Controllers
 
         [HttpPost]
         public ActionResult Login(LoginViewModel viewModel, string returnUrl = null)
-        {
-            
-            
+        {                        
 
             if (Membership.ValidateUser(viewModel.UserName, viewModel.Password))
             {
