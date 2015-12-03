@@ -1,4 +1,5 @@
-﻿using SecureApp.Web.Models.Home;
+﻿using SecureApp.Web.LoginService;
+using SecureApp.Web.Models.Home;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,13 @@ namespace SecureApp.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILoginService loginService;
+
+        public HomeController(ILoginService loginService)
+        {
+            this.loginService = loginService;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -17,10 +25,11 @@ namespace SecureApp.Web.Controllers
 
         [HttpPost]
         public ActionResult Login(LoginViewModel viewModel, string returnUrl = null)
-        {                        
-
-            if (Membership.ValidateUser(viewModel.UserName, viewModel.Password))
+        {            
+            if (loginService.Login(viewModel.UserName, viewModel.Password))
             {
+                var user = Membership.GetAllUsers();
+
                 FormsAuthentication.SetAuthCookie(viewModel.UserName, viewModel.RememberMe);
 
                 if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/") && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
