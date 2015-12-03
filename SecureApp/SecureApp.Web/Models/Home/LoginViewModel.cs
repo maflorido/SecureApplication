@@ -5,11 +5,11 @@ namespace SecureApp.Web.Models.Home
 {
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage ="{0} is Required.")]
         [DisplayName("User name")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "{0} is Required.")]
         [DataType(DataType.Password)]
         [DisplayName("Password")]
         public string Password { get; set; }

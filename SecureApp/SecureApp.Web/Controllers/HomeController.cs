@@ -28,7 +28,6 @@ namespace SecureApp.Web.Controllers
         {            
             if (loginService.Login(viewModel.UserName, viewModel.Password))
             {
-                var user = Membership.GetAllUsers();
 
                 FormsAuthentication.SetAuthCookie(viewModel.UserName, viewModel.RememberMe);
 
@@ -45,7 +44,7 @@ namespace SecureApp.Web.Controllers
             {
                 ModelState.AddModelError("", "The user name or password provided is incorrect");
             }
-            return View();
+            return View("Index", viewModel);
         }
         
     }

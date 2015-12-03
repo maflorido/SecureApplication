@@ -7,6 +7,8 @@
 
 @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
 {
+    @Html.ValidationSummary(false)
+
     <div class="form-group">
         @Html.LabelFor(x => x.UserName, new { @class = "col-md-2 control-label" })
         <div class="col-md-4">            
