@@ -128,6 +128,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\CustomHttpModule.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DependencyResolverConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -210,6 +211,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\LoginService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SecureAppModules\SecureAppModules.csproj">
+      <Project>{67e4aaac-d9af-4c19-ae15-6a23b26beb4d}</Project>
+      <Name>SecureAppModules</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
